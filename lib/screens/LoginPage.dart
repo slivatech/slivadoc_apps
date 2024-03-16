@@ -57,6 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
+                      } else if (!value.contains('@')) {
+                        return 'Please enter a valid email';
                       }
                       return null;
                     },
@@ -85,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Checkbox(
                               value: _rememberMe,
@@ -117,9 +119,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                           Navigator.pushReplacement(
+                          Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const HomePage()),
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()),
                           );
                         }
                       },
