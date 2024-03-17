@@ -5,10 +5,10 @@ class AnimalEventPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cari Dokter'),
+        title: const Text('Animal Event'),
       ),
-      body: Center(
-        child: Text('Halaman Cari Dokter'),
+      body: const Center(
+        child: Text('Halaman Event Animal Expo'),
       ),
     );
   }

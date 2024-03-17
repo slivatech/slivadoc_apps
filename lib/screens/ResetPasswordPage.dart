@@ -13,7 +13,7 @@ class _ForgotPasswordPageState extends State<ResetPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Forgot Password'),
+        title: const Text('Forgot Password'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -24,7 +24,7 @@ class _ForgotPasswordPageState extends State<ResetPasswordPage> {
             children: [
               TextFormField(
                 controller: _newPasswordController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'New Password',
                 ),
                 obscureText: true,
@@ -35,21 +35,21 @@ class _ForgotPasswordPageState extends State<ResetPasswordPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Perform password reset logic here
                   }
                 },
-                child: Text('Reset Password'),
+                child: const Text('Reset Password'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Back to Login'),
+                child: const Text('Back to Login'),
               ),
             ],
           ),

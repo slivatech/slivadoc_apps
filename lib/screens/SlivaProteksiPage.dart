@@ -5,10 +5,10 @@ class SlivaProteksiPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cari Dokter'),
+        title: const Text('Sliva Proteksi'),
       ),
-      body: Center(
-        child: Text('Halaman Cari Dokter'),
+      body: const Center(
+        child: Text('Halaman Sliva Proteksi'),
       ),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:slivadoc_mobile_apps/screens/ResetPasswordPage.dart';
 import 'package:slivadoc_mobile_apps/screens/HomePage.dart';
+import 'package:slivadoc_mobile_apps/screens/PageRegister.dart';
+import 'package:flutter/gestures.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -130,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                         backgroundColor: const Color(0xFF00B7FF),
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,
-                          horizontal: 20.0,
+                          horizontal: 15.0,
                         ),
                       ),
                       child: Row(
@@ -156,6 +158,82 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                  const SizedBox(height: 26),
+                  const Text(
+                    'atau masuk dengan',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue,
+                          border: Border.all(
+                            color: Colors.blue,
+                            width: 2,
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(2),
+                        child: const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: Icon(Icons.apple, color: Colors.white),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue,
+                          border: Border.all(
+                            color: Colors.blue,
+                            width: 2,
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(2),
+                        child: Image.asset(
+                          'lib/assets/google.png',
+                          width: 24,
+                          height: 24,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text.rich(
+                    TextSpan(
+                      text: "Belum punya akun? ",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Buat Akun",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.blue,
+                            // decoration: TextDecoration.underline,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PageRegister()),
+                              );
+                            },
+                        ),
+                      ],
                     ),
                   ),
                 ],

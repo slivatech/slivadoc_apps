@@ -5,9 +5,9 @@ class CariDokterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cari Dokter'),
+        title: const Text('Cari Dokter'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Halaman Cari Dokter'),
       ),
     );

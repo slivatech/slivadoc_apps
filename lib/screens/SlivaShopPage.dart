@@ -5,10 +5,10 @@ class SlivaShopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cari Dokter'),
+        title: const Text('SlivaShop'),
       ),
-      body: Center(
-        child: Text('Halaman Cari Dokter'),
+      body: const Center(
+        child: Text('Halaman Belanja Kebutuhan hewan perliharaan'),
       ),
     );
   }
