@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:slivadoc_mobile_apps/screens/CariDokterPage.dart';
 import 'package:slivadoc_mobile_apps/screens/TanyaDokterPage.dart';
 import 'package:slivadoc_mobile_apps/screens/ArtikelKesehatanPage.dart';
-import 'package:slivadoc_mobile_apps/screens/SlivaProteksiPage.dart';
+// import 'package:slivadoc_mobile_apps/screens/SlivaProteksiPage.dart';
 import 'package:slivadoc_mobile_apps/screens/SlivaShopPage.dart';
 import 'package:slivadoc_mobile_apps/screens/AnimalEventPage.dart';
 import 'package:slivadoc_mobile_apps/screens/AnimalAcademyPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:slivadoc_mobile_apps/screens/Profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     'Cari Dokter': CariDokterPage(),
     'Tanya Dokter': TanyaDokterPage(),
     'Artikel Kesehatan': ArtikelKesehatanPage(),
-    'SlivaProteksi': SlivaProteksiPage(),
+    'Profile': ProfileUpdateScreen(),
     'SlivaShop': SlivaShopPage(),
     'Animal Event': AnimalEventPage(),
     'Animal Academy': AnimalAcademyPage(),
@@ -86,15 +87,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  // Action when chat icon is tapped
-                },
-                icon: const Icon(
-                  Icons.chat,
-                  color: Color(0xFF3254AB),
                 ),
               ),
               IconButton(
@@ -194,13 +186,13 @@ class HomeScreen extends StatelessWidget {
       case 'Pesan \nDriver':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
+          MaterialPageRoute(builder: (context) => ProfileUpdateScreen()),
         );
         break;
       case 'Sliva \nProteksi':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
+          MaterialPageRoute(builder: (context) => ProfileUpdateScreen()),
         );
         break;
       case 'Sliva \nShop':
