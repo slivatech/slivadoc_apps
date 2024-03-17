@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:slivadoc_mobile_apps/screens/CariDokterPage.dart';
 import 'package:slivadoc_mobile_apps/screens/TanyaDokterPage.dart';
 import 'package:slivadoc_mobile_apps/screens/ArtikelKesehatanPage.dart';
@@ -8,6 +6,7 @@ import 'package:slivadoc_mobile_apps/screens/SlivaProteksiPage.dart';
 import 'package:slivadoc_mobile_apps/screens/SlivaShopPage.dart';
 import 'package:slivadoc_mobile_apps/screens/AnimalEventPage.dart';
 import 'package:slivadoc_mobile_apps/screens/AnimalAcademyPage.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Slivadoc',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -63,110 +62,109 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 0.0),
-                child: SizedBox(
-                  height: 32,
-                  child: TextFormField(
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    decoration: InputDecoration(
-                      hintText: 'Cari nama dokter, klinik?',
-                      prefixIcon:
-                          const Icon(Icons.search, color: Color(0xFF00B7FF)),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 5.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: const BorderSide(color: Colors.grey),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: const BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: const BorderSide(color: Colors.grey),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: TextFormField(
+                      style: const TextStyle(fontSize: 14, color: Colors.grey),
+                      decoration: const InputDecoration(
+                        hintText: 'Cari nama dokter, klinik?',
+                        border: InputBorder.none,
+                        prefixIcon:
+                            Icon(Icons.search, color: Color(0xFF3254AB)),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                // Action when chat icon is tapped
-              },
-              icon: const Icon(
-                Icons.chat,
-                color: Colors.blue,
+              IconButton(
+                onPressed: () {
+                  // Action when chat icon is tapped
+                },
+                icon: const Icon(
+                  Icons.chat,
+                  color: Color(0xFF3254AB),
+                ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                // Handle notification icon press
-              },
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.blue,
+              IconButton(
+                onPressed: () {
+                  // Handle notification icon press
+                },
+                icon: const Icon(
+                  Icons.notifications,
+                  color: Color(0xFF3254AB),
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
-      body: _pageMap.values.elementAt(_currentIndex),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-          ),
-          border: Border(
-            top: BorderSide(
-              color: Colors.blue,
-              width: 1.0,
-            ),
+            ],
           ),
         ),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: onTabTapped,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+        body: _pageMap.values.elementAt(_currentIndex),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Cari Dokter',
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(255, 120, 247, 252),
+                blurRadius: 3.0,
+                spreadRadius: 1.0,
+                offset: Offset(0, -1),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.question_answer),
-              label: 'Tanya Dokter',
+            child: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: onTabTapped,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home, color: Color(0xFF3254AB)),
+                  label: 'Beranda',
+                ),
+                BottomNavigationBarItem(
+                  icon: FaIcon(FontAwesomeIcons.stethoscope,
+                      color: Color(0xFF3254AB)),
+                  label: 'Buat Janji',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.email, color: Color(0xFF3254AB)),
+                  label: 'Pesan',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.article, color: Color(0xFF3254AB)),
+                  label: 'Transaksi',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person, color: Color(0xFF3254AB)),
+                  label: 'Profil',
+                ),
+              ],
+              selectedItemColor: Colors.blue,
+              unselectedItemColor: Colors.grey,
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
+              elevation: 0,
+              backgroundColor: Colors.white,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.article),
-              label: 'Artikel Kesehatan',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_pharmacy),
-              label: 'SlivaProteksi',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shop),
-              label: 'SlivaShop',
-            ),
-          ],
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.black,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
 
@@ -175,49 +173,49 @@ class HomeScreen extends StatelessWidget {
 
   void _navigateToPage(BuildContext context, String pageTitle) {
     switch (pageTitle) {
-      case 'Cari Dokter':
+      case 'Cari \nDokter':
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => CariDokterPage()),
         );
         break;
-      case 'Tanya Dokter':
+      case 'Tanya \nDokter':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CariDokterPage()),
+          MaterialPageRoute(builder: (context) => TanyaDokterPage()),
         );
         break;
-      case 'Artikel Kesehatan':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ArtikelKesehatanPage()),
-        );
-        break;
-      case 'Pesan Driver':
+      case 'Artikel \nKesehatan':
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => ArtikelKesehatanPage()),
         );
         break;
-      case 'Sliva Proteksi':
+      case 'Pesan \nDriver':
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
         );
         break;
-      case 'Sliva Shop':
+      case 'Sliva \nProteksi':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
+        );
+        break;
+      case 'Sliva \nShop':
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => SlivaShopPage()),
         );
         break;
-      case 'Animal Event':
+      case 'Animal \nEvent':
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => AnimalEventPage()),
         );
         break;
-      case 'Animal Academy':
+      case 'Animal \nAcademy':
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => AnimalAcademyPage()),
@@ -231,7 +229,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -272,6 +270,13 @@ class HomeScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
           side: BorderSide.none,
+        ),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ).copyWith(
+        overlayColor: MaterialStateProperty.resolveWith<Color>(
+          (Set<MaterialState> states) {
+            return Colors.transparent;
+          },
         ),
       ),
       child: Column(
