@@ -36,16 +36,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _children = [
-    const HomeScreen(),
-    CariDokterPage(),
-    TanyaDokterPage(),
-    ArtikelKesehatanPage(),
-    SlivaProteksiPage(),
-    SlivaShopPage(),
-    // AnimalEventPage(),
-    // AnimalAcademyPage(),
-  ];
+  final Map<String, Widget> _pageMap = {
+    'Home': const HomeScreen(),
+    'Cari Dokter': CariDokterPage(),
+    'Tanya Dokter': TanyaDokterPage(),
+    'Artikel Kesehatan': ArtikelKesehatanPage(),
+    'SlivaProteksi': SlivaProteksiPage(),
+    'SlivaShop': SlivaShopPage(),
+    'Animal Event': AnimalEventPage(),
+    'Animal Academy': AnimalAcademyPage(),
+  };
 
   void onTabTapped(int index) {
     setState(() {
@@ -54,52 +54,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _navigateToPage(BuildContext context, String pageTitle) {
-    switch (pageTitle) {
-      case 'Cari Dokter':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => CariDokterPage()),
-        );
-        break;
-      case 'Tanya Dokter':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => TanyaDokterPage()),
-        );
-        break;
-      case 'Artikel Kesehatan':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ArtikelKesehatanPage()),
-        );
-        break;
-      case 'SlivaProteksi':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
-        );
-        break;
-      case 'SlivaShop':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SlivaShopPage()),
-        );
-        break;
-      case 'Animal Event':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => AnimalEventPage()),
-        );
-        break;
-      case 'Animal Academy':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => AnimalAcademyPage()),
-        );
-        break;
-      default:
-        break;
-    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => _pageMap[pageTitle]!),
+    );
   }
 
   @override
@@ -115,8 +73,9 @@ class _HomePageState extends State<HomePage> {
                 child: SizedBox(
                   height: 32,
                   child: TextFormField(
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
                     decoration: InputDecoration(
-                      hintText: 'Cari nama dokter, klinik, produk?',
+                      hintText: 'Cari nama dokter, klinik?',
                       prefixIcon:
                           const Icon(Icons.search, color: Color(0xFF00B7FF)),
                       contentPadding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -137,95 +96,28 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-          ],
-        ),
-        actions: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: SizedBox(
-                      child: Image.asset(
-                        'lib/assets/logo.png',
-                        width: 32,
-                        height: 32,
-                      ),
-                    ),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            IconButton(
+              onPressed: () {
+                // Action when chat icon is tapped
+              },
+              icon: const Icon(
+                Icons.chat,
                 color: Colors.blue,
               ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+            ),
+            IconButton(
+              onPressed: () {
+                // Handle notification icon press
+              },
+              icon: const Icon(
+                Icons.notifications,
+                color: Colors.blue,
               ),
-            ),
-            ListTile(
-              title: const Text('Cari Dokter'),
-              onTap: () {
-                _navigateToPage(context, 'Cari Dokter');
-              },
-            ),
-            ListTile(
-              title: const Text('Tanya Dokter'),
-              onTap: () {
-                _navigateToPage(context, 'Tanya Dokter');
-              },
-            ),
-            ListTile(
-              title: const Text('Artikel Kesehatan'),
-              onTap: () {
-                _navigateToPage(context, 'Artikel Kesehatan');
-              },
-            ),
-            ListTile(
-              title: const Text('SlivaProteksi'),
-              onTap: () {
-                _navigateToPage(context, 'SlivaProteksi');
-              },
-            ),
-            ListTile(
-              title: const Text('SlivaShop'),
-              onTap: () {
-                _navigateToPage(context, 'SlivaShop');
-              },
-            ),
-            ListTile(
-              title: const Text('Animal Event'),
-              onTap: () {
-                _navigateToPage(context, 'Animal Event');
-              },
-            ),
-            ListTile(
-              title: const Text('Animal Academy'),
-              onTap: () {
-                _navigateToPage(context, 'Animal Academy');
-              },
             ),
           ],
         ),
       ),
-      body: _children[_currentIndex],
+      body: _pageMap.values.elementAt(_currentIndex),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -234,8 +126,8 @@ class _HomePageState extends State<HomePage> {
           ),
           border: Border(
             top: BorderSide(
-              color: Colors.blue, // Warna border atas
-              width: 1.0, // Lebar border
+              color: Colors.blue,
+              width: 1.0,
             ),
           ),
         ),
@@ -267,14 +159,6 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.shop),
               label: 'SlivaShop',
             ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.event),
-            //   label: 'Animal Event',
-            // ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.school),
-            //   label: 'Animal Academy',
-            // ),
           ],
           selectedItemColor: Colors.blue,
           unselectedItemColor: Colors.black,
@@ -289,97 +173,122 @@ class _HomePageState extends State<HomePage> {
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  void _navigateToPage(BuildContext context, String pageTitle) {
+    switch (pageTitle) {
+      case 'Cari Dokter':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CariDokterPage()),
+        );
+        break;
+      case 'Tanya Dokter':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CariDokterPage()),
+        );
+        break;
+      case 'Artikel Kesehatan':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ArtikelKesehatanPage()),
+        );
+        break;
+      case 'Pesan Driver':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ArtikelKesehatanPage()),
+        );
+        break;
+      case 'Sliva Proteksi':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
+        );
+        break;
+      case 'Sliva Shop':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SlivaShopPage()),
+        );
+        break;
+      case 'Animal Event':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AnimalEventPage()),
+        );
+        break;
+      case 'Animal Academy':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AnimalAcademyPage()),
+        );
+        break;
+      default:
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildButton(context, 'Cari \nDokter'),
+                _buildButton(context, 'Tanya \nDokter'),
+                _buildButton(context, 'Artikel \nKesehatan'),
+                _buildButton(context, 'Pesan \nDriver'),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildButton(context, 'Sliva \nProteksi'),
+                _buildButton(context, 'Sliva \nShop'),
+                _buildButton(context, 'Animal \nEvent'),
+                _buildButton(context, 'Animal \nAcademy'),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButton(BuildContext context, String title) {
+    return ElevatedButton(
+      onPressed: () {
+        _navigateToPage(context, title);
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
+          side: BorderSide.none,
+        ),
+      ),
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(0),
-            child: Image.asset(
-              'lib/assets/meow.png',
-              height: 300,
-              width: 300,
-            ),
+          Image.asset(
+            'lib/assets/logo.png',
+            height: 40,
+            width: 40,
           ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the Hubungi Klinik page
-                },
-                child: const Text('Hubungi Klinik'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the Hubungi Dokter page
-                },
-                child: const Text('Hubungi Dokter'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: const Text(
-              'Klinik Terdekat',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.left,
+          const SizedBox(height: 8),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.blue,
+              fontSize: 12,
             ),
-          ),
-          SizedBox(
-            height: 200,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 150,
-                  margin: const EdgeInsets.only(right: 16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image:
-                          AssetImage('assets/images/klinik_${index + 1}.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.5),
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                            ),
-                          ),
-                          child: Text(
-                            'Klinik Hewan SlivaDoc ${index + 1}',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

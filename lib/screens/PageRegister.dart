@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:slivadoc_mobile_apps/screens/LoginPage.dart';
 
 class PageRegister extends StatefulWidget {
   @override
@@ -25,15 +26,14 @@ class _PageRegisterState extends State<PageRegister> {
         _isAgreed) {
       String fullName = '$_firstName $_lastName';
       String phoneNumber = '$_whatsAppCountryCode$_whatsAppNumber';
-      String userEmail = _emailController.text; // Add this line
+      String userEmail = _emailController.text;
 
-      // Show a popup dialog with the registered user's information
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             contentPadding:
-                const EdgeInsets.all(16.0), // Menambahkan padding ke konten
+                const EdgeInsets.all(16.0),
             title: Row(
               children: [
                 Padding(
@@ -47,7 +47,7 @@ class _PageRegisterState extends State<PageRegister> {
                 const Text(
                   'Berhasil!',
                   style: TextStyle(
-                    color: Colors.blue, // Warna teks biru
+                    color: Colors.blue,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -55,28 +55,34 @@ class _PageRegisterState extends State<PageRegister> {
             ),
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min, // Sesuaikan ukuran dengan konten
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
                   'Pendaftaran berhasil untuk:',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold, // Teks tebal
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8.0), // Jarak antar teks
+                const SizedBox(height: 8.0),
                 Text('Nama: $fullName'),
                 Text('Email: $userEmail'),
                 Text('Nomor Telepon: $phoneNumber'),
               ],
             ),
             actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                );
+              },
+            ),
+          ],
           );
         },
       );
@@ -88,18 +94,34 @@ class _PageRegisterState extends State<PageRegister> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text(
-          'Buat Akun Baru',
-          style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Image.asset(
+                  'lib/assets/logo.png',
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+              const Text(
+                'Buat Akun Baru',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
           child: Form(
             key: _formKey,
             child: Column(
