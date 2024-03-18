@@ -67,6 +67,15 @@ flutter:
          - lib/assets/humberger.png
          - lib/assets/meow.png
          - lib/assets/google.png
+         - lib/assets/apps.png
+         - lib/assets/promo.png
+         - lib/assets/promo1.png
+         - lib/assets/promo2.png
+         - lib/assets/promo3.png
+         - lib/assets/partnership.png
+         - lib/assets/partner1.png
+         - lib/assets/partner2.png
+         
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
