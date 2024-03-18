@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:slivadoc_mobile_apps/screens/Profile.dart';
 import 'package:slivadoc_mobile_apps/components/SliderBanner.dart';
 import 'package:slivadoc_mobile_apps/components/SliderService.dart';
+import 'package:slivadoc_mobile_apps/components/bestSellingProduct.dart';
 
 void main() {
   runApp(MyApp());
@@ -83,8 +84,7 @@ class _HomePageState extends State<HomePage> {
                     decoration: const InputDecoration(
                       hintText: 'Cari nama dokter, klinik?',
                       border: InputBorder.none,
-                      prefixIcon:
-                          Icon(Icons.search, color: Color(0xFF3254AB)),
+                      prefixIcon: Icon(Icons.search, color: Color(0xFF3254AB)),
                     ),
                   ),
                 ),
@@ -223,7 +223,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30.0),
+      padding: const EdgeInsets.only(top: 30.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -250,6 +250,7 @@ class HomeScreen extends StatelessWidget {
             const SliderBanner(),
             const SizedBox(height: 20.0),
             const SlivadocSlider(),
+            const BestSellingProduct(),
           ],
         ),
       ),

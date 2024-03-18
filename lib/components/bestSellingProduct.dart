@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SlivadocSlider extends StatelessWidget {
-  const SlivadocSlider({Key? key}) : super(key: key);
+class BestSellingProduct extends StatelessWidget {
+  const BestSellingProduct({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class SlivadocSlider extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.only(left: 16.0, bottom: 5.0),
           child: Text(
-            'Layanan Slivadoc',
+            'Produk Paling Dicari',
             style: TextStyle(
               fontSize: 16,
               color: Colors.blue,
@@ -28,27 +28,27 @@ class SlivadocSlider extends StatelessWidget {
               _buildSlivadocItem(
                 context,
                 imageUrl: 'lib/assets/logo.png',
-                title: 'Vaksin',
+                title: 'Pencernaan',
               ),
               _buildSlivadocItem(
                 context,
                 imageUrl: 'lib/assets/logo.png',
-                title: 'Sterilisasi',
+                title: 'Vitamin',
               ),
               _buildSlivadocItem(
                 context,
                 imageUrl: 'lib/assets/logo.png',
-                title: 'Grooming',
+                title: 'Makanan',
               ),
               _buildSlivadocItem(
                 context,
                 imageUrl: 'lib/assets/logo.png',
-                title: 'Lion Cut',
+                title: 'Demam',
               ),
               _buildSlivadocItem(
                 context,
                 imageUrl: 'lib/assets/logo.png',
-                title: 'Rawat Inap',
+                title: 'Aksesoris',
               ),
             ],
           ),
