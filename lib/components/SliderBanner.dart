@@ -5,105 +5,122 @@ class SliderBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Column(
-        children: [
-          TabBar(
-            labelStyle: const TextStyle(fontSize: 11, color: Colors.white),
-            unselectedLabelStyle: const TextStyle(
-                fontSize: 10, color: Color.fromARGB(255, 20, 123, 219)),
-            indicator: BoxDecoration(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 16.0),
+          child: Text(
+            'Penawaran Menarik',
+            style: TextStyle(
+              fontSize: 16,
               color: Colors.blue,
-              borderRadius: BorderRadius.circular(20),
+              fontWeight: FontWeight.bold,
             ),
-            indicatorPadding: const EdgeInsets.symmetric(vertical: 5),
-            tabs: [
-              Tab(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text('Semua'),
-                    ),
-                  ),
+          ),
+        ),
+        const SizedBox(height: 5.0),
+        DefaultTabController(
+          length: 3,
+          child: Column(
+            children: [
+              TabBar(
+                labelStyle: const TextStyle(fontSize: 11, color: Colors.white),
+                unselectedLabelStyle: const TextStyle(
+                    fontSize: 10, color: Color.fromARGB(255, 20, 123, 219)),
+                indicator: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ),
-              Tab(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text('Promo'),
-                    ),
-                  ),
-                ),
-              ),
-              Tab(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text('Kerja Sama'),
+                indicatorPadding: const EdgeInsets.symmetric(vertical: 7),
+                tabs: [
+                  Tab(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 7),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text('Semua'),
+                        ),
+                      ),
                     ),
                   ),
+                  Tab(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 7),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text('Promo'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 7),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text('Kerja Sama'),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.21,
+                child: TabBarView(
+                  children: [
+                    _buildSlider(
+                      context,
+                      [
+                        'lib/assets/promo.png',
+                        'lib/assets/promo1.png',
+                        'lib/assets/promo2.png',
+                        'lib/assets/promo3.png',
+                        'lib/assets/partnership.png',
+                        'lib/assets/partner1.png',
+                        'lib/assets/partner2.png',
+                        'lib/assets/apps.png',
+                      ],
+                    ),
+                    _buildSlider(
+                      context,
+                      [
+                        'lib/assets/promo.png',
+                        'lib/assets/promo1.png',
+                        'lib/assets/promo2.png',
+                        'lib/assets/promo3.png',
+                      ],
+                    ),
+                    _buildSlider(context, [
+                      'lib/assets/partnership.png',
+                      'lib/assets/partner1.png',
+                      'lib/assets/partner2.png',
+                      'lib/assets/apps.png',
+                    ]),
+                  ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 10.0),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.21,
-            child: TabBarView(
-              children: [
-                _buildSlider(
-                  context,
-                  [
-                    'lib/assets/promo.png',
-                    'lib/assets/promo1.png',
-                    'lib/assets/promo2.png',
-                    'lib/assets/promo3.png',
-                    'lib/assets/partnership.png',
-                    'lib/assets/partner1.png',
-                    'lib/assets/partner2.png',
-                    'lib/assets/apps.png',
-                  ],
-                ),
-                _buildSlider(
-                  context,
-                  [
-                    'lib/assets/promo.png',
-                    'lib/assets/promo1.png',
-                    'lib/assets/promo2.png',
-                    'lib/assets/promo3.png',
-                  ],
-                ),
-                _buildSlider(context, [
-                  'lib/assets/partnership.png',
-                  'lib/assets/partner1.png',
-                  'lib/assets/partner2.png',
-                  'lib/assets/apps.png',
-                ]),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

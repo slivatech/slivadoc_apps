@@ -8,6 +8,7 @@ import 'package:slivadoc_mobile_apps/screens/AnimalAcademyPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:slivadoc_mobile_apps/screens/Profile.dart';
 import 'package:slivadoc_mobile_apps/components/SliderBanner.dart';
+import 'package:slivadoc_mobile_apps/components/SliderService.dart';
 
 void main() {
   runApp(MyApp());
@@ -165,10 +166,58 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   void _navigateToPage(BuildContext context, String pageTitle) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SliderBanner()),
-    );
+    switch (pageTitle) {
+      case 'Cari \nDokter':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CariDokterPage()),
+        );
+        break;
+      case 'Tanya \nDokter':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TanyaDokterPage()),
+        );
+        break;
+      case 'Artikel \nKesehatan':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ArtikelKesehatanPage()),
+        );
+        break;
+      case 'Pesan \nDriver':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfileUpdateScreen()),
+        );
+        break;
+      case 'Sliva \nProteksi':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfileUpdateScreen()),
+        );
+        break;
+      case 'Sliva \nShop':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SlivaShopPage()),
+        );
+        break;
+      case 'Animal \nEvent':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AnimalEventPage()),
+        );
+        break;
+      case 'Animal \nAcademy':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AnimalAcademyPage()),
+        );
+        break;
+      default:
+        break;
+    }
   }
 
   @override
@@ -198,7 +247,9 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20.0),
-            const SliderBanner()
+            const SliderBanner(),
+            const SizedBox(height: 20.0),
+            const SlivadocSlider(),
           ],
         ),
       ),
@@ -238,7 +289,7 @@ class HomeScreen extends StatelessWidget {
             title,
             style: const TextStyle(
               color: Colors.blue,
-              fontSize: 12,
+              fontSize: 11,
             ),
             textAlign: TextAlign.center,
           ),
