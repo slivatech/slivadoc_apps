@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slivadoc_mobile_apps/screens/CariDokterPage.dart';
-import 'package:slivadoc_mobile_apps/screens/TanyaDokterPage.dart';
+// import 'package:slivadoc_mobile_apps/screens/TanyaDokterPage.dart';
 import 'package:slivadoc_mobile_apps/screens/ArtikelKesehatanPage.dart';
 import 'package:slivadoc_mobile_apps/screens/SlivaShopPage.dart';
 import 'package:slivadoc_mobile_apps/screens/AnimalEventPage.dart';
@@ -10,6 +10,8 @@ import 'package:slivadoc_mobile_apps/screens/Profile.dart';
 import 'package:slivadoc_mobile_apps/components/SliderBanner.dart';
 import 'package:slivadoc_mobile_apps/components/SliderService.dart';
 import 'package:slivadoc_mobile_apps/components/bestSellingProduct.dart';
+import 'package:slivadoc_mobile_apps/screens/SlivaProteksiPage.dart';
+import 'package:slivadoc_mobile_apps/screens/BookingDriver.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,10 +43,10 @@ class _HomePageState extends State<HomePage> {
   final Map<String, Widget> _pageMap = {
     'Home': const HomeScreen(),
     'Cari Dokter': CariDokterPage(),
-    'Tanya Dokter': TanyaDokterPage(),
     'Artikel Kesehatan': ArtikelKesehatanPage(),
-    'Profile': ProfileUpdateScreen(),
+    'Klinik Hewan': CariDokterPage(),
     'SlivaShop': SlivaShopPage(),
+    'Profile': ProfileUpdateScreen(),
     'Animal Event': AnimalEventPage(),
     'Animal Academy': AnimalAcademyPage(),
   };
@@ -173,10 +175,10 @@ class HomeScreen extends StatelessWidget {
           MaterialPageRoute(builder: (context) => CariDokterPage()),
         );
         break;
-      case 'Tanya \nDokter':
+      case 'Klinik \nHewan':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => TanyaDokterPage()),
+          MaterialPageRoute(builder: (context) => CariDokterPage()),
         );
         break;
       case 'Artikel \nKesehatan':
@@ -188,13 +190,13 @@ class HomeScreen extends StatelessWidget {
       case 'Pesan \nDriver':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProfileUpdateScreen()),
+          MaterialPageRoute(builder: (context) => BookingDriverPage()),
         );
         break;
       case 'Sliva \nProteksi':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProfileUpdateScreen()),
+          MaterialPageRoute(builder: (context) => SlivaProteksiPage()),
         );
         break;
       case 'Sliva \nShop':
@@ -231,7 +233,7 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _buildButton(context, 'Cari \nDokter'),
-                _buildButton(context, 'Tanya \nDokter'),
+                _buildButton(context, 'Klinik \nHewan'),
                 _buildButton(context, 'Artikel \nKesehatan'),
                 _buildButton(context, 'Pesan \nDriver'),
               ],
